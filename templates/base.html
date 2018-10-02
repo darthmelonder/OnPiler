@@ -1,0 +1,18 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    {% block title %}<title>OnPiler</title>{% endblock %}
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    {% block css %}
+    {% endblock %}
+</head>
+
+<body>
+    {% block body_content %}
+    {% endblock %}
+</body>
+</html>

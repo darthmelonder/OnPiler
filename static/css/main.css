@@ -1,0 +1,28 @@
+textarea {
+    overflow: auto;
+    resize: none;
+    width: 80%;
+	height: 500px;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Tahoma, sans-serif;
+}
+.code_area
+{
+    padding: 15px 15px 15px 15px;
+}
+
+
+input[type=submit]
+{
+    background-color: coral;
+    color: white;
+    width: 40%;
+    height: 5vh;
+}
+
+.submit
+{
+    padding: 10px 10px 10px 50vh;
+
+}

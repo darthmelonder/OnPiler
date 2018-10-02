@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block body_content %}
+<form action="evaluate" method="POST">
+    <div class="code_area">
+    <textarea name="code_area" id="area_area"> </textarea>
+    </div>
+    <div class="submit">
+        <input type="submit" value="submit">
+    </div>
+</form>
+{% endblock %}
