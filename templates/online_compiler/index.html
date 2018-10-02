@@ -1,6 +1,18 @@
 {% extends 'base.html' %}
 {% block body_content %}
+
+<div class="third_heading">
+<h3> OnPiler: Your Online Compiler</h3>
+</div>
+
 <form action="evaluate" method="POST">
+    {% csrf_token %}
+    <div class="selection">
+        <select>
+            <option value="C++">C++</option>
+            <option value="C">C</option>
+        </select>
+    </div>
     <div class="code_area">
     <textarea name="code_area" id="area_area"> </textarea>
     </div>

@@ -26,3 +26,17 @@ input[type=submit]
     padding: 10px 10px 10px 50vh;
 
 }
+
+.third_heading
+{
+    padding: 10px 10px 10px 55vh;
+}
+
+.selection
+{
+    padding: 10px 10px 10px 5vh;
+}
+
+select{
+    width: 10%;
+}
