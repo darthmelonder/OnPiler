@@ -4,13 +4,13 @@
 <link rel="stylesheet" href="{% static 'css/output.css' %}"/>
 {% endblock %}
 {% block body_content %}
+<h3 class="heading">Your Output:</h3>
 <div class="output_area">
-    <h3>Your Output:</h3>
      {% if error  %}
-        <h4 class="error">{{ error|linebreaks }}</h4>
+        <label class="error">{{ error|linebreaks }}</label>
      {% endif %}
     {% if output  %}
-        <h4 class="output">{{ output|linebreaks }}</h4>
+        <label class="output">{{ output|linebreaks }}</label>
     {% endif %}
 </div>
 {% endblock %}
