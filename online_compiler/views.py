@@ -51,6 +51,11 @@ def evaluate (request):
         Need to run the exectuable now
     '''
     output_command = " ".join([EXEC_PATH])
-    code_output = subprocess.check_output(output_command,shell=True).decode("utf-8")
+    code_pipe = subprocess.Popen(output_command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    try:
+        code_output = code_pipe.communicate(timeout=1)
+    except Exception as e:
+        context = {"error": "Time Limit Exceeeded"}
+        return render(request,"online_compiler/evaluate.html",context)
     context = {"output": code_output}
     return render (request,"online_compiler/evaluate.html",context)

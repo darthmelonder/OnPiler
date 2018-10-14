@@ -4,7 +4,9 @@
 <div class="third_heading">
 <h3> OnPiler: Your Online Compiler</h3>
 </div>
-
+<div class="fourth_heading">
+    <h4>SOURCE CODE</h4>
+</div>
 <form action="evaluate" method="POST">
     {% csrf_token %}
     <div class="selection">
@@ -14,7 +16,13 @@
         </select>
     </div>
     <div class="code_area">
-    <textarea name="code_area"> </textarea>
+    <textarea class="code_text_area" name="code_area"> </textarea>
+    </div>
+    <div class="fourth_heading">
+        <h4>STANDARD INPUT</h4>
+    </div>
+    <div class="Input">
+        <textarea class="input_area" name="input"></textarea>
     </div>
     <div class="submit">
         <input type="submit" value="submit">

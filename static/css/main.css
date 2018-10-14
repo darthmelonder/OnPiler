@@ -1,12 +1,35 @@
-textarea {
+.code_text_area {
     overflow: auto;
     resize: none;
     width: 80%;
-	height: 500px;
+	height: 70vh;
 	border: 3px solid #cccccc;
 	padding: 5px;
+	font-size: 16px;
 	font-family: Tahoma, sans-serif;
 }
+
+.fourth_heading {
+    padding-left: 2%;
+
+}
+
+.Input {
+    padding-left: 2%;
+    padding-bottom: 2%;
+}
+.input_area {
+    overflow: auto;
+    resize: none;
+    width: 40%;
+    height: 20vh;
+    border: 3px solid #cccccc;
+    padding: 5px;
+	font-size: 16px;
+	font-family: Tahoma, sans-serif;
+}
+
+
 .code_area
 {
     padding: 15px 15px 15px 15px;
@@ -23,18 +46,20 @@ input[type=submit]
 
 .submit
 {
-    padding: 10px 10px 10px 50vh;
-
+    margin: 0 auto;
+    width: 40%;
+    padding-bottom: 2%;
 }
 
 .third_heading
 {
-    padding: 10px 10px 10px 55vh;
+    margin: 0 auto;
+    width: 40%;
 }
 
 .selection
 {
-    padding: 10px 10px 10px 5vh;
+    padding: 10px 10px 10px 2%;
 }
 
 select{
