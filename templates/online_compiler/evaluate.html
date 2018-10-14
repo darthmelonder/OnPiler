@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/output.css' %}"/>
+{% endblock %}
+{% block body_content %}
+<div class="output_area">
+    <h3>Your Output:</h3>
+     {% if error  %}
+        <h4 class="error">{{ error|linebreaks }}</h4>
+     {% endif %}
+    {% if output  %}
+        <h4 class="output">{{ output|linebreaks }}</h4>
+    {% endif %}
+</div>
+{% endblock %}

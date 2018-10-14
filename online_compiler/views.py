@@ -28,8 +28,11 @@ def evaluate (request):
         compile_status = subprocess.check_output(shell_command,shell=True,stderr=subprocess.STDOUT)
 
     except subprocess.CalledProcessError as e:
-        return HttpResponse(str(e.output))
+        error_stack = e.output.decode("utf-8")
+        error_stack = error_stack.replace(FILE_PATH,"\n")
+        context = {"error": error_stack}
+        return render(request,"online_compiler/evaluate.html",context)
     #except subprocess.CalledProcessError as e:
     #    return HttpResponse(str(e)+ " " + str(shell_command))
-
-    return HttpResponse(str(lang) + " " + str(code_area) + " " +  str(compile_status))
+    context = {"output": compile_status}
+    return render (request,"online_compiler/evaluate.html",context)
