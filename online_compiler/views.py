@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from django.conf import settings
 import os
+import time
 import subprocess
 # Create your views here.
 def index (request):
@@ -34,6 +35,16 @@ def evaluate (request):
         took code from code_area and wrote it into file present at FILE_PATH above 
     '''
 
+    input_area = request.POST.get('input')
+    IN_FILE_PATH = os.path.join(CODE_DIR,"usercode.txt")
+    with open (IN_FILE_PATH,'w') as f:
+        f.write(input_area)
+    f.close()
+
+    '''
+        took code from input_area and wrote it into file present ar IN_FILE_PATH
+    '''
+
     shell_command = " ".join([cmd,"-o",EXEC_PATH, FILE_PATH])
     try:
         compile_status = subprocess.check_output(shell_command,shell=True,stderr=subprocess.STDOUT)
@@ -50,12 +61,35 @@ def evaluate (request):
         compilation is successful now. 
         Need to run the exectuable now
     '''
-    output_command = " ".join([EXEC_PATH])
+    output_command = " ".join([EXEC_PATH,"<",IN_FILE_PATH])
     code_pipe = subprocess.Popen(output_command,shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    '''
+        check for a standard 5 second time limit while running executable
+    '''
+
     try:
-        code_output = code_pipe.communicate(timeout=1)
+        start = time.time()
+        code_output = code_pipe.communicate(timeout=5)
+        elapsed = time.time()
+        code_output=code_output[0].decode("utf-8")
     except Exception as e:
-        context = {"error": "Time Limit Exceeeded"}
+        '''
+            time limit has been exceeded
+        '''
+        context = {"error": "Time Limit Exceeeded (5 seconds)"}
         return render(request,"online_compiler/evaluate.html",context)
-    context = {"output": code_output}
+
+    if (code_pipe.returncode or code_pipe.returncode!=0):
+        '''
+            Handling other runtime errors
+        '''
+        try:
+            output = subprocess.check_output(output_command,shell=True,stderr=subprocess.STDOUT)
+        except subprocess.CalledProcessError as e:
+            error_stack = "Runtime Error: \n" + str(e)
+            error_stack = error_stack.replace(EXEC_PATH,"\n")
+            context = {"error": error_stack}
+            return render(request,"online_compiler/evaluate.html",context)
+
+    context = {"output": code_output,"time": str(elapsed-start)}
     return render (request,"online_compiler/evaluate.html",context)

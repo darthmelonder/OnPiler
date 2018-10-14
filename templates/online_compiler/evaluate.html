@@ -13,4 +13,7 @@
         <label class="output">{{ output|linebreaks }}</label>
     {% endif %}
 </div>
+{% if time %}
+<h4 class="heading">Runtime: {{ time }}</h4>
+{% endif %}
 {% endblock %}
