@@ -122,3 +122,4 @@ STATICFILES_DIRS = [
 ]
 
 STATIC_URL = '/static/'
+
