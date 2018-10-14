@@ -1,11 +1,12 @@
 .heading {
-    color: #F97200;
+    padding-top: 15px;
+
 
 }
 
 .output_area {
     border-style: solid;
-    background-color: #FDD6B6;
+    background-color: #EFEFEF;
     padding-left: 20px;
 }
 
